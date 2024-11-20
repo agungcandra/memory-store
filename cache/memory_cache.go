@@ -2,6 +2,7 @@ package cache
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -50,6 +51,7 @@ func (m *MemoryCache) Search(attributeKey, attributeValue string) string {
 		}
 	}
 
+	sort.Strings(result)
 	return strings.Join(result, ", ")
 }
 
@@ -59,5 +61,6 @@ func (m *MemoryCache) Key() string {
 		keys = append(keys, key)
 	}
 
+	sort.Strings(keys)
 	return strings.Join(keys, ", ")
 }
